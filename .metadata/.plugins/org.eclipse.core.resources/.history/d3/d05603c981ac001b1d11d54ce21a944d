@@ -1,0 +1,25 @@
+
+public class Sample03 {
+
+	public static void main(String[] args) {
+		int a= 0;
+		a++; //a=a+1
+		System.out.println(a);
+		int b= 0;
+		int c = b++;
+		System.out.println(c);
+		System.out.println(b);
+		
+		int d = 0;
+		++d;
+		System.out.println(d);
+		
+		int e= 0;
+		int f= ++e;
+		System.out.println(f);
+	
+		
+
+	}
+
+}

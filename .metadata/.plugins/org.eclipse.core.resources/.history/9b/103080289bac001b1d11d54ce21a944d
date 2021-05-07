@@ -1,0 +1,13 @@
+class MyString{}
+public class Sample06 {
+
+	public static void main(String[] args) {
+		//Reference Type- String
+		String name = "이순신";
+		String name2 = "이순신";
+		boolean check = (name ==name2)? true : false ;
+		System.out.println(check);
+
+	}
+
+}

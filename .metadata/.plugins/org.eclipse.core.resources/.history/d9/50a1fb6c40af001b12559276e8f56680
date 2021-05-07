@@ -1,0 +1,26 @@
+
+public class WhyMethod {
+//	public static void printTwoTimesA() {
+//		System.out.println("-");
+//		System.out.println("A");
+//		System.out.println("a");
+//	}
+	public static void main(String[] args) {
+		
+//		printTwoTimesA();
+//		printTwoTimesA();
+//		printTwoTimesA();
+				//인자, argument
+		printTwo("a","#");
+		printTwo("b","*");
+		printTwo("c","&");
+
+	}
+							//매개변수, parameter
+public static void printTwo(String text, String delimiter) {
+	System.out.println(delimiter);
+	System.out.println(text);
+	System.out.println(text);
+}
+
+}
