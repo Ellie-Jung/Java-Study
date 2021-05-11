@@ -7,7 +7,9 @@ class SubscriberInfo{
 	public String add;
 	SubscriberInfo(){}
 	SubscriberInfo(String name, String id, String pw){
-		this (name, id, pw, "","");
+		this.name = name;
+		this.id = id;
+		this.pw = pw;
 	}
 	SubscriberInfo(String name, String id, String pw, String no, String add){
 		this.name = name;
