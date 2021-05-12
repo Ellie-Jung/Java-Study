@@ -1,10 +1,10 @@
 package com.test;
  class BBSItem {
-	static int lastSeqNo = 0; 
+	static int count = 0; 
 	int seqNo; //일련번호 필드
 	{
-		++lastSeqNo;
-		seqNo = lastSeqNo;
+		++count ;
+		seqNo = count ;
 	}
 	String writer; //작성자 필드
 	String writtenDate; //작성일자필드
@@ -38,7 +38,7 @@ public class Workshop2_3 {
 		System.out.println(p1.seqNo);
 		System.out.println(p2.seqNo);
 		System.out.println(p3.seqNo);
-
+		System.out.println("모든 제품의 수는 "+BBSItem.count );
 	}
 
 }
