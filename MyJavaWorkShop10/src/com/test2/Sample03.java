@@ -1,14 +1,23 @@
 package com.test2;
 class MyException extends Exception{
 	public MyException(String msg) {
-		
+		super(msg);
+		 
 	}
 }
 public class Sample03 {
 	static void checkMethod(int num) {
-		if( num%2 ==0) {
-			throw new ArithmeticException();
+		try {
+			throw new MyException("나의 오류입니다.");
+		} catch (MyException e) {
+			
+			System.out.println("오류입니다.");
 		}
+		
+//		if( num%2 ==0) {
+//		
+//			throw new MyException("나의 예외처리입니다.");
+//		}
 	}
 	public static void main(String[] args) {
 		checkMethod(1);
