@@ -17,19 +17,27 @@ public class Doctor {
 //	}
 //	public void setDepartment(String department) {
 //		this.department = department;
+//    sysout
 //	}
 //
 //	public Doctor(String name) {
 //		this.name=name;
 //	}
-    public Doctor( String name, String department ) {
-        this.name = name;
-        this.department = department;
-    }
+//    public Doctor( String name, String department ) {
+//        this.name = name;
+//        this.department = department;
+//    }
+//    
     
     
-    
-    public void treatPatient() {
+    public Doctor(String name, String department) {
+    	  this.name = name;
+          this.department = department;
+	}
+
+
+
+	public void treatPatient() {
         System.out.println( "환자를 진료합니다." );
     }
     

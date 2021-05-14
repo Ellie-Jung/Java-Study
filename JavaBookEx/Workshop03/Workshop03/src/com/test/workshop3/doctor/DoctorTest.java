@@ -29,7 +29,7 @@ public class DoctorTest {
 //        surg.get(1).performSurgery();
 //        System.out.println(surg.get(2));
 //        surg.get(2).performSurgery();
-//        
+//        이렇게 출력가능. 밑에처럼 간단하게 출력할수있음
         
         for(Dentist d : dent) {
         	System.out.println(d);
