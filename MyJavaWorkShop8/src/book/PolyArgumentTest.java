@@ -39,6 +39,10 @@ public class PolyArgumentTest {
 	public static void main(String[] args) {
 		Buyer b = new Buyer();
 		Tv t = new Tv();
+		Computer c = new Computer();
+		b.buy(t);
+		b.buy(c);
+		b.buy(new Tv());
 
 		b.buy(new Tv());
 		b.buy(new Computer());

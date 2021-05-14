@@ -4,24 +4,24 @@ public class Doctor {
     
     private String name;
     private String department;
-    
+//    public  Doctor() {}
   
-    public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getDepartment() {
-		return department;
-	}
-	public void setDepartment(String department) {
-		this.department = department;
-	}
-
-	public Doctor(String name) {
-		this.name=name;
-	}
+//    public String getName() {
+//		return name;
+//	}
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+//	public String getDepartment() {
+//		return department;
+//	}
+//	public void setDepartment(String department) {
+//		this.department = department;
+//	}
+//
+//	public Doctor(String name) {
+//		this.name=name;
+//	}
     public Doctor( String name, String department ) {
         this.name = name;
         this.department = department;
