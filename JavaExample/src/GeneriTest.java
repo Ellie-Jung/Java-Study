@@ -16,6 +16,8 @@ public class GeneriTest {
 		ArrayList<Integer> list2 = new ArrayList<Integer>(); //타입을 지정
 		list2.add(50);
 //		list2.add(g); //잘못된 타입이 들어갔을때 컴파일러가 잡아줌
+		//지네릭스 사용시 타입 체크가 강화됨.
+		//여러종류 타입 받고싶으면 <Object> 사용하고 형변환 해야함.//지네릭스 도입이후에는 꼭 <>사이에 타입 써줘야함. 오브젝트라도
 		list2.add(40);
 		list2.add(30);
 		//형변환 생략가능 

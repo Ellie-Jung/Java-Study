@@ -1,7 +1,7 @@
-class MyPoint{
+class MyPoin{
 	int x;
 	int y;
-	public MyPoint(int x, int y) {
+	public MyPoin(int x, int y) {
 		this.x=x;
 		this.y=y;
 	}
@@ -13,7 +13,7 @@ class MyPoint{
 public class Ex6_7 {
 
 	public static void main(String[] args) {
-		MyPoint p = new MyPoint(1, 1);
+		MyPoin p = new MyPoin(1, 1);
 		
 		//p와 (2,2) 의 거리를 구한다.
 		System.out.println(p.getDistance(2,2));

@@ -1,4 +1,4 @@
-import javax.xml.bind.annotation.XmlAccessOrder;
+
 
 public class Ex6_6 {
 	static double getDistance (int x, int y, int x1, int y1) {
