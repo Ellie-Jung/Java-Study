@@ -1,3 +1,4 @@
+package ch6;
 
 public class Ex6_24 {
 	static int abs(int value) {

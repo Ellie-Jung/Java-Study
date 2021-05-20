@@ -1,3 +1,4 @@
+package ch7;
 class Car{
 	String color;
 	int door;

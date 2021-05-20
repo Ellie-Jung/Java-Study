@@ -1,3 +1,4 @@
+package ch6;
 import javax.swing.plaf.nimbus.AbstractRegionPainter;
 
 public class Ex6_23 {

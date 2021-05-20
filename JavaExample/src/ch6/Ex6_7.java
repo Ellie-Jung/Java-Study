@@ -1,3 +1,4 @@
+package ch6;
 class MyPoin{
 	int x;
 	int y;

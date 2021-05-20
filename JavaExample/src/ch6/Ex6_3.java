@@ -1,3 +1,4 @@
+package ch6;
 class Student{
 	String name;
 	int ban;
