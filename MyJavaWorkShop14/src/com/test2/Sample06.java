@@ -35,7 +35,7 @@ class Employee{
 	}
 } 
 class PartTimeEmployee extends Employee{
-	public PartTimeEmployee() {}
+//	public PartTimeEmployee() {}
 	public PartTimeEmployee(String name, int age) {
 		super(name,age);
 	}
