@@ -11,19 +11,20 @@ class FireEngin extends Car{
 public class CastingTvTest1 {
 
 	public static void main(String[] args) {
-//		Car car = null;
-//		FireEngin fe = new FireEngin();
-//		FireEngin fe2 = null;
+		Car car = null;
+		FireEngin fe = new FireEngin();
+		FireEngin fe2 = null;
+		car= fe;                //car = (car)fe;에서 형변환 생략. 업캐스팅
+		fe2 = (FireEngin) car;  //다운캐스팅. 형변환 생략 불가
+		
 //		
 //		fe.water();
-//		car= fe;
-//		fe2 = (FireEngin) car;
 //		fe2.water();
 		
-		Car car= new Car();
-		Car car2= null;
-		FireEngin fe = null;
-		
+//		Car car= new Car();
+//		Car car2= null;
+//		FireEngin fe = null;
+//		
 		car.drive();
 //		fe = (FireEngin)car;
 ////		fe.drive();

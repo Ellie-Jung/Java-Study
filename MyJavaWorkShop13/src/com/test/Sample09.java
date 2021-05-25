@@ -7,9 +7,9 @@ abstract class Animal2{
 class Dog2 extends Animal2{
 	public void breathing() {System.out.println("Dog breathing");}
 }
-class Cat2 extends Animal2{
+class Cat3 extends Animal2{
 	@Override
-	void breathing() {
+	public void breathing() {
 		System.out.println("Cat breathing");
 	}
 }
