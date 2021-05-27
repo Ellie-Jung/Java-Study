@@ -38,11 +38,10 @@ public class Student {
 	}
 	public static void main(String[] args) {
 		Student[] stu = new Student[10];
-		System.out.println(stu[0]);
-		for(int i = 0; i <stu.length ; i++) {
-			stu[i] =i;
-		}
-		System.out.println(stu[0]);
+//		System.out.println(stu[0]);
+		
+		
+		
 	}
 
 }
