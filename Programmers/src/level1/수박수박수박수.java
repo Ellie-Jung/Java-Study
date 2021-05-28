@@ -5,15 +5,15 @@ class Solution2 {
        
         for(int i =0; i<n;i++) {
         	if(i%2==0)
-        	answer +="¼ö";
+        	answer +="ìˆ˜";
         	if(i%2==1)
-        	answer +="¹Ú";
+        	answer +="ë°•";
 
         }
         return answer;
     }
 }
-public class ¼ö¹Ú¼ö¹Ú¼ö¹Ú¼ö {
+public class ìˆ˜ë°•ìˆ˜ë°•ìˆ˜ë°•ìˆ˜ {
 	public static void main(String[] args) {
 
 

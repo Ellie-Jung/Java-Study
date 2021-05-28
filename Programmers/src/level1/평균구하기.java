@@ -9,7 +9,7 @@ class Solution1 {
         return (double)sum/arr.length;
     }
 }
-public class Æò±Õ±¸ÇÏ±â {
+public class í‰ê· êµ¬í•˜ê¸° {
 
 	public static void main(String[] args) {
 		int[] arr = {1,2,3,4};

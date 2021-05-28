@@ -1,6 +1,6 @@
 package level1;
 
-public class ÇÚµåÆù¹øÈ£°¡¸®±â {
+public class í•¸ë“œí°ë²ˆí˜¸ê°€ë¦¬ê¸° {
 
 }
 class Solution {

@@ -1,6 +1,6 @@
 package level1;
 
-public class Çà·ÄÀÇµ¡¼À {
+public class í–‰ë ¬ì˜ë§ì…ˆ {
 	public int[][] solution (int[][] arr1, int[][]arr2){
 		int[][] answer =new int[arr1.length][arr1[0].length];
 		for(int i=0;i<arr1.length;i++) {
@@ -23,7 +23,7 @@ public class Çà·ÄÀÇµ¡¼À {
 		int[][] arr1 = {{1},{2}};
 		int[][] arr2 = {{3},{5}};
 		
-		Çà·ÄÀÇµ¡¼À e = new Çà·ÄÀÇµ¡¼À();
+		í–‰ë ¬ì˜ë§ì…ˆ e = new í–‰ë ¬ì˜ë§ì…ˆ();
 		e.solution(arr1, arr2);
 		
 	
