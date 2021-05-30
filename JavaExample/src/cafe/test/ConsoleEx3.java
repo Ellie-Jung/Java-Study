@@ -50,9 +50,9 @@ public class ConsoleEx3 {
 	public static void history() {
 		int i=0;
 		//LinkedList에 저장된 내용(최근 MAZ_SIZE개의 명령어)을 보여준다.
-		ListIterator it = q.listIterator();
-		while(it.hasNext()) {
-			System.out.println(++i+"."+it.next());
+		ListIterator it = q.listIterator();//저장된 요소들 읽어오기.
+		while(it.hasNext()) { //읽어올 요소가 남았는지확인
+			System.out.println(++i+"."+it.next()); //다음요소 읽어오기.
 		}
 	
 		
