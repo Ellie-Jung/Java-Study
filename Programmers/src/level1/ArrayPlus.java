@@ -1,6 +1,6 @@
 package level1;
 
-public class 행렬의덧셈 {
+public class ArrayPlus {
 	public int[][] solution (int[][] arr1, int[][]arr2){
 		int[][] answer =new int[arr1.length][arr1[0].length];
 		for(int i=0;i<arr1.length;i++) {
@@ -23,7 +23,7 @@ public class 행렬의덧셈 {
 		int[][] arr1 = {{1},{2}};
 		int[][] arr2 = {{3},{5}};
 		
-		행렬의덧셈 e = new 행렬의덧셈();
+		ArrayPlus e = new ArrayPlus();
 		e.solution(arr1, arr2);
 		
 	
