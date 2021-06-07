@@ -71,7 +71,6 @@ public class FootballPlayer implements Serializable{
 		}return result;
 	}
 
-	@Override
 	public int compareTo(FootballPlayer o) {
 		
 		int result = this.team.compareTo(o.team);  //음수 양수 0
