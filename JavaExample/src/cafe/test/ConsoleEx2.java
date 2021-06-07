@@ -3,27 +3,27 @@ import java.util.Scanner;
 
 class ConsoleEx2 {
 
-	static String[] argArr;       // ÀÔ·ÂÇÑ ¸Å°³º¯¼ö¸¦ ´ã±âÀ§ÇÑ ¹®ÀÚ¿­¹è¿­
+	static String[] argArr;       // ìž…ë ¥í•œ ë§¤ê°œë³€ìˆ˜ë¥¼ ë‹´ê¸°ìœ„í•œ ë¬¸ìžì—´ë°°ì—´
 	public static void main(String[] args) {
 		while(true) {
 			String prompt = ">>";
 			System.out.print(prompt);
 
-			// È­¸éÀ¸·ÎºÎÅÍ ¶óÀÎ´ÜÀ§·Î ÀÔ·Â¹Þ´Â´Ù.
+			// í™”ë©´ìœ¼ë¡œë¶€í„° ë¼ì¸ë‹¨ìœ„ë¡œ ìž…ë ¥ë°›ëŠ”ë‹¤.
 			Scanner s = new Scanner(System.in);
 			String input = s.nextLine();
 
-			//ÀÔ·Â¹ÞÀº °ª¿¡¼­ ¾ÕµÚ °ø¹é Á¦°ÅÈÄ, ¸í·É¶óÀÎÀÇ ³»¿ëÀ» °ø¹éÀ» ±¸ºÐÀÚ·ÎÇØ¼­ argArr¿¡ ´ã´Â´Ù
-			//ÀÌ¶§ °ø¹éÀÌ ÇÏ³ª ÀÌ»óÀÎ °æ¿ì¿¡µµ ÇÏ³ªÀÇ °ø¹éÀ¸·Î °£ÁÖÇØ¾ßÇÔ 
-			argArr= input.trim().split(" +");  // +´Â Á¤±Ô½ÄÇ¥ÇöÁß +¾ÕÀÇ ¹®ÀÚ°¡ ÇÏ³ªÀÌ»óÀ» ¶æÇÑ´Ù. ÀÌ·¸°ÔÇÏ¸é °ø¹éÀÌÇÏ³ªÀÌ»óÀÎ°æ¿ìµµ ´Ù Á¦°ÅµÊ
+			//ìž…ë ¥ë°›ì€ ê°’ì—ì„œ ì•žë’¤ ê³µë°± ì œê±°í›„, ëª…ë ¹ë¼ì¸ì˜ ë‚´ìš©ì„ ê³µë°±ì„ êµ¬ë¶„ìžë¡œí•´ì„œ argArrì— ë‹´ëŠ”ë‹¤
+			//ì´ë•Œ ê³µë°±ì´ í•˜ë‚˜ ì´ìƒì¸ ê²½ìš°ì—ë„ í•˜ë‚˜ì˜ ê³µë°±ìœ¼ë¡œ ê°„ì£¼í•´ì•¼í•¨ 
+			argArr= input.trim().split(" +");  // +ëŠ” ì •ê·œì‹í‘œí˜„ì¤‘ +ì•žì˜ ë¬¸ìžê°€ í•˜ë‚˜ì´ìƒì„ ëœ»í•œë‹¤. ì´ë ‡ê²Œí•˜ë©´ ê³µë°±ì´í•˜ë‚˜ì´ìƒì¸ê²½ìš°ë„ ë‹¤ ì œê±°ë¨
 
-			if(input.equalsIgnoreCase("Q")) { // q ¶Ç´Â Q¸¦ ÀÔ·ÂÇÏ¸é ½ÇÇàÁ¾·áÇÑ´Ù.
+			if(input.equalsIgnoreCase("Q")) { // q ë˜ëŠ” Që¥¼ ìž…ë ¥í•˜ë©´ ì‹¤í–‰ì¢…ë£Œí•œë‹¤.
 				System.exit(0);
 			} else {
 				for(int i=0; i < argArr.length;i++) {
 					System.out.println(argArr[i]);
 				}
-				/* À§ÀÇ ÄÚµå¸¦ Çâ»óµÈ for¹®À¸·Î º¯°æÇÏ¸é ´ÙÀ½°ú °°´Ù.
+				/* ìœ„ì˜ ì½”ë“œë¥¼ í–¥ìƒëœ forë¬¸ìœ¼ë¡œ ë³€ê²½í•˜ë©´ ë‹¤ìŒê³¼ ê°™ë‹¤.
                       for(String arg : argArr) {
                             System.out.println(arg);                                                      
                       }

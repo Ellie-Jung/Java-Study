@@ -12,7 +12,7 @@ public class ConsoleEx1 {
 			Scanner sc = new Scanner(System.in);
 			String input = sc.nextLine();
 //			if(input.equals("q") || input.equals("Q")) break;
-			if(input.equalsIgnoreCase("q")) break; //´ë¼Ò¹®ÀÚ ±¸ºĞ ¾øÀÌ ºñ±³ÇÏ±â
+			if(input.equalsIgnoreCase("q")) break; //që˜ëŠ” Që¥¼ ì…ë ¥í•˜ë©´ ì‹¤í–‰ ì¢…ë£Œí•œë‹¤.
 			System.out.println(input);
 			
 		}
