@@ -12,7 +12,7 @@ public class Ex9_3 {
 		
 		if(pos !=0) {
 			path = fullPath.substring(0,pos);
-			fileName = fullPath.substring(pos+1); //ÁöÁ¤µÈ À§Ä¡ºÎÅÍ ³¡±îÁö Àß¶ó³½´Ù.
+			fileName = fullPath.substring(pos+1); //ì§€ì •ëœ ìœ„ì¹˜ë¶€í„° ëê¹Œì§€ ì˜ë¼ë‚¸ë‹¤.
 		}
 		
 		System.out.println("fullPath:"+fullPath);

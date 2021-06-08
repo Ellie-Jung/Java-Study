@@ -26,6 +26,6 @@ class UnsupportedFunctionException extends RuntimeException{
 public class Ex8_9 {
 	
 public static void main(String[] args) {
-	throw new UnsupportedFunctionException ("Áö¿øÇÏÁö ¾Ê´Â ±â´ÉÀÔ´Ï´Ù. ",100);
+	throw new UnsupportedFunctionException ("ì§€ì›í•˜ì§€ ì•ŠëŠ” ê¸°ëŠ¥ì…ë‹ˆë‹¤. ",100);
 }
 }
