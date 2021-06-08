@@ -7,7 +7,7 @@ class Find {
 				return "김서방은"+i+"에 있다.";
 			}
 		}
-		return "i";
+		return "김서방";
 	}
 	public String solution2(String[] seoul) {
 		int x= 0;

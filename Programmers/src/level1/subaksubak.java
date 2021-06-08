@@ -13,7 +13,7 @@ class Solution2 {
         return answer;
     }
 }
-public class 수박수박수박수 {
+public class subaksubak {
 	public static void main(String[] args) {
 
 

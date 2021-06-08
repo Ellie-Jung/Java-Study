@@ -2,32 +2,32 @@ package cafe.test;
 import java.util.*;
 
 public class ConsoleEx3 {
-	static String[] argArr;                         // ÀÔ·ÂÇÑ ¸Å°³º¯¼ö¸¦ ´ã±âÀ§ÇÑ ¹®ÀÚ¿­¹è¿­
-	static LinkedList q = new LinkedList(); // »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ³»¿ëÀ» ÀúÀåÇÒ Å¥(Queue) -> µ¥ÀÌÅÍÀÇ Ãß°¡»èÁ¦°¡ ½¬¿î ¸µÅ©µå¸®½ºÆ®ÀÌ¿ë
-	static final int MAX_SIZE = 5;              // q(Å¥)¿¡ ÀúÀåµÉ ¼ö ÀÖ´Â °ªÀÇ °³¼ö
+	static String[] argArr;                         // ì…ë ¥í•œ ë§¤ê°œë³€ìˆ˜ë¥¼ ë‹´ê¸°ìœ„í•œ ë¬¸ìì—´ë°°ì—´
+	static LinkedList q = new LinkedList(); // ì‚¬ìš©ìê°€ ì…ë ¥í•œ ë‚´ìš©ì„ ì €ì¥í•  í(Queue) -> ë°ì´í„°ì˜ ì¶”ê°€ì‚­ì œê°€ ì‰¬ìš´ ë§í¬ë“œë¦¬ìŠ¤íŠ¸ì´ìš©
+	static final int MAX_SIZE = 5;              // q(í)ì— ì €ì¥ë  ìˆ˜ ìˆëŠ” ê°’ì˜ ê°œìˆ˜
 
 	public static void main(String[] args) { 
-		Scanner s = new Scanner(System.in); // ÇÑ¹ø¸¸ »ı¼ºÇØ¼­ Àç»ç¿ëÇÏ¸é µÇ¹Ç·Î ¹İº¹¹® ¹ÛÀ¸·Î ÀÌµ¿
+		Scanner s = new Scanner(System.in); // í•œë²ˆë§Œ ìƒì„±í•´ì„œ ì¬ì‚¬ìš©í•˜ë©´ ë˜ë¯€ë¡œ ë°˜ë³µë¬¸ ë°–ìœ¼ë¡œ ì´ë™
 
 		while(true) {
 			String prompt = ">>";
 			System.out.print(prompt);
-			String input = s.nextLine();// È­¸éÀ¸·ÎºÎÅÍ ¶óÀÎ´ÜÀ§·Î ÀÔ·Â¹Ş´Â´Ù. 
+			String input = s.nextLine();// í™”ë©´ìœ¼ë¡œë¶€í„° ë¼ì¸ë‹¨ìœ„ë¡œ ì…ë ¥ë°›ëŠ”ë‹¤. 
 
 			save(input);
 
-			input = input.trim();        // ÀÔ·Â¹ŞÀº °ª¿¡¼­ ºÒÇÊ¿äÇÑ ¾ÕµÚ °ø¹éÀ» Á¦°ÅÇÑ´Ù.
-			argArr = input.split(" +");  // ¿£ÅÍ¸¦ ±âÁØÀ¸·Î ³ª´²¼­ argArr¹è¿­¿¡ ´ã´Â´Ù. (¿©·¯°³ÀÇ °ø¹éÃ³¸®¸¦ À§ÇØ +»ç¿ë)
+			input = input.trim();        // ì…ë ¥ë°›ì€ ê°’ì—ì„œ ë¶ˆí•„ìš”í•œ ì•ë’¤ ê³µë°±ì„ ì œê±°í•œë‹¤.
+			argArr = input.split(" +");  // ì—”í„°ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ë‚˜ëˆ ì„œ argArrë°°ì—´ì— ë‹´ëŠ”ë‹¤. (ì—¬ëŸ¬ê°œì˜ ê³µë°±ì²˜ë¦¬ë¥¼ ìœ„í•´ +ì‚¬ìš©)
 
 			String command = argArr[0].trim();
 
 			if("".equals(command)) continue;
 
-			command = command.toLowerCase(); // ¸í·É¾î¸¦ ¼Ò¹®ÀÚ·Î ¹Ù²Û´Ù.
+			command = command.toLowerCase(); // ëª…ë ¹ì–´ë¥¼ ì†Œë¬¸ìë¡œ ë°”ê¾¼ë‹¤.
 
-			if(command.equals("q")) { // q ¶Ç´Â Q¸¦ ÀÔ·ÂÇÏ¸é ½ÇÇàÁ¾·áÇÑ´Ù.
+			if(command.equals("q")) { // q ë˜ëŠ” Që¥¼ ì…ë ¥í•˜ë©´ ì‹¤í–‰ì¢…ë£Œí•œë‹¤.
 				System.exit(0);
-			} else if(command.equals("history")) {  // equalsIgnoreCase´ë½Å equals¸¦ »ç¿ë.
+			} else if(command.equals("history")) {  // equalsIgnoreCaseëŒ€ì‹  equalsë¥¼ ì‚¬ìš©.
 				history();
 			} else {
 				for(int i=0; i < argArr.length;i++) {
@@ -40,19 +40,19 @@ public class ConsoleEx3 {
 	public static void save(String input) {
 		if(input==null || "".equals(input)) return;
 		
-		q.offer(input); //1. queue¿¡ ÀúÀåÇÑ´Ù.
-		if(q.size()>MAX_SIZE) { //2. queueÀÇ ÃÖ´ëÅ©±â(MAX_SIZE)¸¦ ³ÖÀ¸¸é Á¦ÀÏ ¿À·¡µÈ ÀúÀå°ªÀ» »èÁ¦ÇÑ´Ù. 
+		q.offer(input); //1. queueì— ì €ì¥í•œë‹¤.
+		if(q.size()>MAX_SIZE) { //2. queueì˜ ìµœëŒ€í¬ê¸°(MAX_SIZE)ë¥¼ ë„£ìœ¼ë©´ ì œì¼ ì˜¤ë˜ëœ ì €ì¥ê°’ì„ ì‚­ì œí•œë‹¤. 
 			q.remove();
 		}
 	}
 
-	// »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ÃÖ±Ù ¸í·ÉÀ» º¸¿©ÁÖ´Â ¸Ş¼­µå
+	// ì‚¬ìš©ìê°€ ì…ë ¥í•œ ìµœê·¼ ëª…ë ¹ì„ ë³´ì—¬ì£¼ëŠ” ë©”ì„œë“œ
 	public static void history() {
 		int i=0;
-		//LinkedList¿¡ ÀúÀåµÈ ³»¿ë(ÃÖ±Ù MAZ_SIZE°³ÀÇ ¸í·É¾î)À» º¸¿©ÁØ´Ù.
-		ListIterator it = q.listIterator();//ÀúÀåµÈ ¿ä¼Òµé ÀĞ¾î¿À±â.
-		while(it.hasNext()) { //ÀĞ¾î¿Ã ¿ä¼Ò°¡ ³²¾Ò´ÂÁöÈ®ÀÎ
-			System.out.println(++i+"."+it.next()); //´ÙÀ½¿ä¼Ò ÀĞ¾î¿À±â.
+		//LinkedListì— ì €ì¥ëœ ë‚´ìš©(ìµœê·¼ MAZ_SIZEê°œì˜ ëª…ë ¹ì–´)ì„ ë³´ì—¬ì¤€ë‹¤.
+		ListIterator it = q.listIterator();//ì €ì¥ëœ ìš”ì†Œë“¤ ì½ì–´ì˜¤ê¸°.
+		while(it.hasNext()) { //ì½ì–´ì˜¬ ìš”ì†Œê°€ ë‚¨ì•˜ëŠ”ì§€í™•ì¸
+			System.out.println(++i+"."+it.next()); //ë‹¤ìŒìš”ì†Œ ì½ì–´ì˜¤ê¸°.
 		}
 	
 		
