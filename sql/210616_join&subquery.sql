@@ -48,36 +48,62 @@ group by name;
 
 --(11) 고객의이름과고객이구매한도서목록
 
-select ename, bookname
-from book b join customer c
-where ;
+select name, bookname
+from customer c  join orders o
+on c.custid=o.custid
+join  book b
+on b.bookid = o.bookid
+;
 
 --(12) 도서의가격(Book 테이블)과판매가격(Orders 테이블)의차이가가장많은주문
---
---
---​
---
---​
---
+
+select * --orderid, max(price-saleprice)
+from orders natural join book
+where (price-saleprice)= (select max(price-saleprice)from book natural join orders)
+;
+
 --(13) 도서의판매액평균보다자신의구매액평균이더높은고객의이름
---
---
---​
---
---​
---
---​
---
+--도서의 판매 평균액
+select avg(saleprice) from orders;
+
+select name
+from orders join customer
+on orders.custid= customer.custid
+group by name
+having avg(saleprice) >(select avg(saleprice) from orders)
+
+;
+
+
+select name, avg(saleprice)
+from orders natural join customer
+group by name;
+
+
 --3. 마당서점에서 다음의 심화된 질문에 대해 SQL 문을 작성하시오.
 --
 --(1) 박지성이 구매한 도서의 출판사와 같은 출판사에서 도서를 구매한 고객의 이름
---
---
---​
---
---​
---
+--박지성이 구매한 도서의 출판사
+select distinct publisher 
+from book natural join orders 
+where custid =(select custid from customer where name ='박지성');
+
+select name
+from book natural join orders natural join customer
+where publisher in( select distinct publisher 
+                    from book natural join orders 
+                    where custid =(select custid 
+                                   from customer 
+                                   where name ='박지성'))and name !='박지성';
+
+
+
 --(2) 두 개 이상의 서로 다른 출판사에서 도서를 구매한 고객의 이름
---
---
---​
+
+--모든 고객이 구매한 출판사
+
+select name
+from book natural join customer natural join orders
+group by name
+having count(distinct publisher)>=2;
+
