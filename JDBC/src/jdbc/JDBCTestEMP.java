@@ -6,47 +6,32 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class JDBCTest {
+public class JDBCTestEMP {
 
 	public static void main(String[] args) {
 		
-		//연결객체 : 연결 정보를 가진다.
-		Connection con= null;
-		//sql을 실행할 메소드 제공
+		Connection con = null;
 		Statement stmt = null;
-		//select의 결과 담는 객체 -> executeQuery(sql); 
 		ResultSet rs = null;
-		
+
 		try {
-			//1. 드라이버 로드하기
-			Class.forName("oracle.jdbc.driver.OracleDriver"); 
+			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
-			//2. 연결실행
 			String url = "jdbc:oracle:thin:@localhost:1521:xe";
-			String user = "HR";
+			String user = "hr";
 			String pw = "tiger";
+			con = DriverManager.getConnection(url, user, pw);
 			
-			con= DriverManager.getConnection(url,user,pw);
+			stmt = con.createStatement();
 			
-			//3. SQL 처리
-			stmt = con.createStatement(); //데이터를 읽기위해 Statement  객체 생성
+			String sql = "select e.empno, e.ename, e.job, e.sal, d.dname,d.loc from emp e, dept d where e.deptno = d.deptno";
 			
-			String sql = "select * from dept01";
+			 rs = stmt.executeQuery(sql);
 			
-			//결과 얻어오기
-			rs = stmt.executeQuery(sql);
-			
-			while(rs.next()) { //읽어오기
-				int deptno = rs.getInt("deptno");
-				System.out.print(deptno+"\t");
-				String dname = rs.getString("dname");
-				System.out.print(dname+"\t");
-				String loc = rs.getString("loc");
-				System.out.println(loc+"\t");
-						
-			}
-			
-			
+			 while(rs.next()) {
+				 System.out.println(rs.getInt(1)+"\t"+rs.getString(2)+"\t"+ rs.getString(3)+"\t"+rs.getInt(4)+"\t"+rs.getString(5)+"\t"+rs.getString(6));
+			 }
+			 
 			
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
@@ -78,5 +63,8 @@ public class JDBCTest {
 				}
 			}
 		}
+		
+
 	}
+
 }
