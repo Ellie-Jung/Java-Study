@@ -8,10 +8,18 @@ public class Ex11 {
 
 		Scanner sc = new Scanner(System.in);
 		
-		int a= sc.nextInt();
-		int b= sc.nextInt();
+		String a= sc.next();
+		String b= sc.next();
 		
+		char[] bb=b.toCharArray();
+		String b0=bb[0]+"";
+		String b1=bb[1]+"";
+		String b2=bb[2]+"";
 		
+		System.out.println(Integer.parseInt(b2)*Integer.parseInt(a));
+		System.out.println(Integer.parseInt(b1)*Integer.parseInt(a));
+		System.out.println(Integer.parseInt(b0)*Integer.parseInt(a));
+		System.out.println(Integer.parseInt(b)*Integer.parseInt(a));
 		
 	}
 
