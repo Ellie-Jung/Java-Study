@@ -81,8 +81,14 @@ public class Calc2 extends HttpServlet{
 			
 			Cookie valueCookie= new Cookie("value",String.valueOf(v)); //쿠기에는 문자열만 저장가능
 			Cookie opCookie= new Cookie("op",op);
+			valueCookie.setPath("/calc2"); //쿠키가 어느경우에 사용자로부터 전달되어야하는지에 대한 경로 ( /로정하면 모든페이지 요청할때마다)
+//			valueCookie.setMaxAge(24*60*60); //쿠키 만료시간 정해준다. 24시간동안 쿠키 유지(없을경우 창닫으면 쿠키없어짐)
+			opCookie.setPath("/calc2"); 
 			resp.addCookie(valueCookie);
 			resp.addCookie(opCookie);
+			
+			resp.sendRedirect("calc2.html"); 
+			
 		}
 		
 		
