@@ -51,6 +51,13 @@
 	<!-- Accept-Encoding불러오고싶으면 변수사이에 -있기때문에 -->
 	header["Accept-Encoding"] : ${header["Accept-Encoding"]}<br>
 	${header.host}<br>
+	<hr>
+	
+	<!-- 연산자 -->
+	${param.n>3}<br> <!-- true /false 반환 -->
+	${param.n lt 3}<br> <!-- < 부등호대신 less than 사용 -->
+	${empty param.n}<br>
+	${not empty param.n? param.n :'값이 비어있습니다.'}<br>
 	
 </body>
 </html>
