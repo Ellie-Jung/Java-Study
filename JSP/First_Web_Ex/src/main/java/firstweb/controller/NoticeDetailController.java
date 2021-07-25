@@ -14,13 +14,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import firstweb.entity.Notice;
+
 @WebServlet("/notice/detail")
 public class NoticeDetailController extends HttpServlet {
+	
+	Connection con;
+	PreparedStatement st;
+	ResultSet rs;
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-
 
 		int	id= Integer.parseInt(request.getParameter("id"));
 
@@ -33,11 +38,11 @@ public class NoticeDetailController extends HttpServlet {
 		try {
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 			
-			Connection con = DriverManager.getConnection(url,user,pw);
-			PreparedStatement st = con.prepareStatement(sql);
+			con = DriverManager.getConnection(url,user,pw);
+			st = con.prepareStatement(sql);
 			st.setInt(1, id);
 			
-			ResultSet rs = st.executeQuery();
+			rs = st.executeQuery();
 					
 			rs.next();
 			
@@ -49,19 +54,22 @@ public class NoticeDetailController extends HttpServlet {
 			String files= rs.getString("FILES");
 			String content= rs.getString("CONTENT");
 
+			/* 이걸 객체화한다.간단히 사용하기위해. 실행은 리스트페이지에서
+			 * //포워드하기전에 전달..데이터심어야함 -> 트라이블럭안에 지역변수기때문에 트라이문안으로 올려주기
+			 * request.setAttribute("title", title); request.setAttribute("regdate",
+			 * regdate); request.setAttribute("writerId", writerId);
+			 * request.setAttribute("hit", hit); request.setAttribute("files", files);
+			 * request.setAttribute("content", content);
+			 */
 			
-			//포워드하기전에 전달..데이터심어야함 -> 트라이블럭안에 지역변수기때문에 트라이문안으로 올려주기
-			request.setAttribute("title", title);
-			request.setAttribute("regdate", regdate);
-			request.setAttribute("writerId", writerId);
-			request.setAttribute("hit", hit);
-			request.setAttribute("files", files);
-			request.setAttribute("content", content);
+			Notice notice = new Notice(id,title,regdate,writerId,hit,files,content);
 			
 			
-		  	rs.close();
-		    st.close();
-		    con.close();
+			
+			request.setAttribute("n", notice);
+			
+			
+			
 			
 			
 		} catch (ClassNotFoundException e) {
@@ -70,11 +78,27 @@ public class NoticeDetailController extends HttpServlet {
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally {
+		  	try {
+				rs.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		    try {
+				st.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		    try {
+				con.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 		
 		
 		//얘가 컨트롤러 . 사용자 요청이 오면 무조건 얘부터 실행되어야한다, 뷰단은 껍데기에 불과
-		//얘를 먼저 실행하고 뷰단이 호출되도록 해야한다.
+		//얘를 먼저 실행하고 뷰단이 호출되도록 해야한다. 
 		//서블릿에서 서블릿으로 전이될수있는 방법 두가지 (redirect, forward)
 		//redirect : 서블릿 호출했는데 여기서 완전 다른 페이지로 가는방법 ( 이페이지호출했는데 로그인안됬으면 로그인하고와라~ 여기서 로그인페이지로 보내버리는 작업등)
 		
@@ -84,7 +108,7 @@ public class NoticeDetailController extends HttpServlet {
 		
 		
 		//forward : 여기서 작업했던 방식을 이어받아서 저기서 작업할때 사용 -> 디스패쳐사용. 리쿼스트로 얻을수있다.
-		request.getRequestDispatcher("/notice/detail.jsp").forward(request, response); //홈 디렉토리(웹앱스,루트-> /)에 노티스폴더에 디테일파일. 포워드에 request response 공유
+		request.getRequestDispatcher("/WEB-INF/view/notice/detail.jsp").forward(request, response); //홈 디렉토리(웹앱스,루트-> /)에 노티스폴더에 디테일파일. 포워드에 request response 공유
 		//포워드하기전에 전달해야한다.
 		
 		
