@@ -8,6 +8,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
 
@@ -200,9 +202,10 @@
 						<td class="title indent text-align-left"><a href="detail?id=${n.id}">${n.title}</a></td>
 						<td>${n.writerId}</td> <!-- el은 저장소에 담겨있는 값을 꺼내오는것. n.writeId로 값꺼내올수 없다.지역변수사용못함 ..그래서 위에서 페이지객체에 값을 담아서 사용-->
 						<td>
-							${n.regdate}	
+							<fmt:formatDate pattern="yyyy-MM-dd" value="${n.regdate}"/> 
+							
 						</td>
-						<td>${n.hit}</td>
+						<td><fmt:formatNumber value="${n.hit}"/></td>
 					</tr>
 				<%-- <%} %> --%>
 				</c:forEach>	
