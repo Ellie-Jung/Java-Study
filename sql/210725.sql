@@ -47,9 +47,14 @@ insert into notice values(4, 'Service 계층 추가하기', 'dragon', 'aaa', sys
 insert into notice values(5, 'JSP에서 JDBC 사용하기', 'newlec', 'soso', sysdate, 33, '');
 insert into notice values(6, '파라미터를 가지는 문장 실행하기', 'okay', 'aaa', sysdate, 1, '');
 insert into notice values(7, '선반_접시_그릇 이 세가지요~~', 'dragon', 'aaa', sysdate, 44, '');
-insert into notice values(8, '' , 'okay', 'aaa', sysdate, 55, '');
+insert into notice values(8, '하이' , 'bye', '', sysdate, 35, '');
+insert into notice values(9, '졸리다' , 'bye', '', sysdate, 215, '');
+insert into notice values(10, '하아앙' , 'bye', '', sysdate, 15, '');
+insert into notice values(11, '자야지' , 'bye', '', sysdate, 5, '');
+
+
 
 select * from notice;
-delete from notice where id=7;
-
+delete from notice where id=11;
+DROP TABLE NOTICE;
 commit;
