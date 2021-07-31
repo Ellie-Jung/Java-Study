@@ -17,72 +17,17 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import firstweb.entity.Notice;
+import firstweb.service.NoticeService;
 
 @WebServlet("/notice/list")
 public class NoticeListController extends HttpServlet{
 
-	Connection con;
-	Statement st;
-	ResultSet rs;
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		List<Notice> list = new ArrayList();
-		
-		String url =  "jdbc:oracle:thin:@localhost:1521:xe";
-		String user = "hr";
-		String pw = "tiger";
-		String sql = "select * from notice";
-		
-		
-		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection(url,user,pw);
-			st = con.createStatement();
-			rs = st.executeQuery(sql);
-				
-			while(rs.next()){
-			
-
-			int id= rs.getInt("ID");
-			String title= rs.getString("TITLE");
-			Date regdate= rs.getDate("REGDATE");
-			String writerId= rs.getString("WRITER_ID");
-			String hit= rs.getString("HIT");
-			String files= rs.getString("FILES");
-			String content= rs.getString("CONTENT");
-			
-			
-			Notice notice = new Notice(id,title,regdate,writerId,hit,files,content);
-			list.add(notice);
-			
-			
-						
-			}                         
-			
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			try {
-				rs.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			try {
-				st.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			try {
-				con.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
-			
-		}
+		NoticeService service = new NoticeService();
+		List<Notice> list = service.getNoticeList();
 		
 
 		request.setAttribute("list", list);
@@ -92,3 +37,8 @@ public class NoticeListController extends HttpServlet{
 		
 	}
 }
+
+
+
+
+	
