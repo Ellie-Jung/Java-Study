@@ -1,4 +1,4 @@
-package firstweb.controller;
+package firstweb.controller.notice;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -18,7 +18,7 @@ import firstweb.entity.Notice;
 import firstweb.service.NoticeService;
 
 @WebServlet("/notice/detail")
-public class NoticeDetailController extends HttpServlet {
+public class DetailController extends HttpServlet {
 	// 컨트롤러를 통해서 사용자의 입.출력을 관할
 	
 	

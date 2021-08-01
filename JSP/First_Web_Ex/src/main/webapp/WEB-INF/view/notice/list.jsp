@@ -200,7 +200,7 @@
 					<tr>
 						<%-- <td>${st.index}/${n.id}</td>  앞에 st.index로 인덱스 값 뽑아낼수있다.--%>
 						<td>${n.id}</td>
-						<td class="title indent text-align-left"><a href="detail?id=${n.id}">${n.title}</a><span>[3]</span></td>
+						<td class="title indent text-align-left"><a href="detail?id=${n.id}">${n.title}</a><span class="text-red">[${n.cmtCount}]</span></td>
 						<td>${n.writerId}</td> <!-- el은 저장소에 담겨있는 값을 꺼내오는것. n.writeId로 값꺼내올수 없다.지역변수사용못함 ..그래서 위에서 페이지객체에 값을 담아서 사용-->
 						<td>
 							<fmt:formatDate pattern="yyyy-MM-dd" value="${n.regdate}"/> 
@@ -218,12 +218,12 @@
 	<c:set var="startNum" value="${page-(page-1)%5}" />
 	<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}" /> <!-- 소숫점은 올림처리해줘야함  Math.ceil(10.2) -> 11.0 -> 소숫점짤라내야한다 -->
 			
-			<div class="indexer margin-top align-right">
-				<h3 class="hidden">현재 페이지</h3>
-				<div><span class="text-orange text-strong">${(empty param.p)?1:param.p}</span> / ${lastNum} pages</div>
+		<div class="indexer margin-top align-right">
+			<h3 class="hidden">현재 페이지</h3>
+			<div><span class="text-orange text-strong">${(empty param.p)?1:param.p}</span> / ${lastNum} pages</div>
 														<!-- param.p==null && param.p=="" -->
+		</div>
 		
-	</div>
 			<div class="margin-top align-center pager">	
 		
 	<div>

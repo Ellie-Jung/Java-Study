@@ -1,4 +1,4 @@
-package firstweb.controller;
+package firstweb.controller.notice;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -17,10 +17,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import firstweb.entity.Notice;
+import firstweb.entity.NoticeView;
 import firstweb.service.NoticeService;
 
 @WebServlet("/notice/list")
-public class NoticeListController extends HttpServlet{
+public class ListController extends HttpServlet{
 
 	
 	@Override
@@ -49,7 +50,7 @@ public class NoticeListController extends HttpServlet{
 		}
 		
 		NoticeService service = new NoticeService();
-		List<Notice> list = service.getNoticeList(field ,query,page);
+		List<NoticeView> list = service.getNoticeList(field ,query,page);
 		int count = service.getNoticeCount(); // 마지막 카운트 확인을 위해 
 		
 
