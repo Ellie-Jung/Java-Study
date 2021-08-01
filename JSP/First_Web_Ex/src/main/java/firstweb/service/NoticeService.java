@@ -91,35 +91,182 @@ public class NoticeService {
 	
 	public int getNoticeCount(String field, String query) {
 		
-		String sql = "select * from (select rownum num, n.* from(SELECT * FROM NOTICE ORDER BY REGDATE DESC) n)"
-					+ " where num between ? and ?;";
+		int count =0;
+		String sql = "select count(ID) count from (select rownum num, n.* from(SELECT * FROM NOTICE where "+field+" like ? ORDER BY REGDATE DESC) n)";
 		
-		return 0;
+
+		String url =  "jdbc:oracle:thin:@localhost:1521:xe";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,"hr","tiger");
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setString(1, "%"+query+"%");
+			
+			ResultSet rs = st.executeQuery();
+			
+			if(rs.next()) {
+				count=rs.getInt("count");
+			}
+		
+			
+			rs.close();
+			st.close();
+			con.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return count;
 	}
 	
 	
 	public Notice getNotice(int id) {
 		
+		Notice notice = null;
 		String sql = "SELECT * FROM NOTICE WHERE ID=?";
 		
-		return null;
+		String url =  "jdbc:oracle:thin:@localhost:1521:xe";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,"hr","tiger");
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, id );
+			
+			
+			ResultSet rs = st.executeQuery();
+				
+			if(rs.next()){
+
+				int nid= rs.getInt("ID");
+				String title= rs.getString("TITLE");
+				Date regdate= rs.getDate("REGDATE");
+				String writerId= rs.getString("WRITER_ID");
+				String hit= rs.getString("HIT");
+				String files= rs.getString("FILES");
+				String content= rs.getString("CONTENT");
+				
+				
+				notice = new Notice(nid,title,regdate,writerId,hit,files,content);
+						
+			}     
+			
+			rs.close();
+			st.close();
+			con.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		
+		return notice;
 	}
 	
 	public Notice getNextNotice(int id) {
 		
+		Notice notice = null;
 	
 		String sql="SELECT * FROM NOTICE WHERE ID= ( SELECT ID FROM NOTICE WHERE REGDATE > (SELECT REGDATE FROM NOTICE WHERE ID=?) AND ROWNUM=1)";
 		
-		return null;
+
+		String url =  "jdbc:oracle:thin:@localhost:1521:xe";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,"hr","tiger");
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, id );
+			
+			
+			ResultSet rs = st.executeQuery();
+				
+			if(rs.next()){
+
+				int nid= rs.getInt("ID");
+				String title= rs.getString("TITLE");
+				Date regdate= rs.getDate("REGDATE");
+				String writerId= rs.getString("WRITER_ID");
+				String hit= rs.getString("HIT");
+				String files= rs.getString("FILES");
+				String content= rs.getString("CONTENT");
+				
+				
+				notice = new Notice(nid,title,regdate,writerId,hit,files,content);
+						
+			}     
+			
+			rs.close();
+			st.close();
+			con.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return notice;
 	}
 	
 	public Notice getPrevNotice(int id) {
 	
+		Notice notice = null;
 		String sql = "SELECT * FROM NOTICE WHERE ID= SELECT ID "
-					+ "from(select * from notice order by regdate desc) WHERE REGDATE < (SELECT REGDATE FROM NOTICE WHERE ID=3)"
+					+ "from(select * from notice order by regdate desc) WHERE REGDATE < (SELECT REGDATE FROM NOTICE WHERE ID=?)"
 					+ " and rownum=1";
 		
-		return null;
+		
+
+		String url =  "jdbc:oracle:thin:@localhost:1521:xe";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,"hr","tiger");
+			PreparedStatement st = con.prepareStatement(sql);
+			st.setInt(1, id );
+			
+			
+			ResultSet rs = st.executeQuery();
+				
+			if(rs.next()){
+
+				int nid= rs.getInt("ID");
+				String title= rs.getString("TITLE");
+				Date regdate= rs.getDate("REGDATE");
+				String writerId= rs.getString("WRITER_ID");
+				String hit= rs.getString("HIT");
+				String files= rs.getString("FILES");
+				String content= rs.getString("CONTENT");
+				
+				
+				notice = new Notice(nid,title,regdate,writerId,hit,files,content);
+						
+			}     
+			
+			rs.close();
+			st.close();
+			con.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		return notice;
 	}
 
 	

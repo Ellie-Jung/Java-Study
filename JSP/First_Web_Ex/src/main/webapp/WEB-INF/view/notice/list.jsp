@@ -9,6 +9,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <!DOCTYPE html>
 <html>
@@ -159,11 +160,11 @@
 						<legend class="hidden">공지사항 검색 필드</legend>
 						<label class="hidden">검색분류</label>
 						<select name="f">
-							<option  value="title">제목</option>
-							<option  value="writerId">작성자</option>
+							<option ${(param.f=="titile")?"selected":""} value="title">제목</option>
+							<option ${(param.f=="writer_id")?"selected":""} value="writer_id">작성자</option>
 						</select> 
 						<label class="hidden">검색어</label>
-						<input type="text" name="q" value=""/>
+						<input type="text" name="q" value="${param.q}"/>  <!-- 전달시에는 list?f=title&q=a 이런 쿼리로 서버에 요청, 이것을 받는 역할을 하는게 컨트롤러-->
 						<input class="btn btn-search" type="submit" value="검색" />
 					</fieldset>
 				</form>
@@ -199,7 +200,7 @@
 					<tr>
 						<%-- <td>${st.index}/${n.id}</td>  앞에 st.index로 인덱스 값 뽑아낼수있다.--%>
 						<td>${n.id}</td>
-						<td class="title indent text-align-left"><a href="detail?id=${n.id}">${n.title}</a></td>
+						<td class="title indent text-align-left"><a href="detail?id=${n.id}">${n.title}</a><span>[3]</span></td>
 						<td>${n.writerId}</td> <!-- el은 저장소에 담겨있는 값을 꺼내오는것. n.writeId로 값꺼내올수 없다.지역변수사용못함 ..그래서 위에서 페이지객체에 값을 담아서 사용-->
 						<td>
 							<fmt:formatDate pattern="yyyy-MM-dd" value="${n.regdate}"/> 
@@ -213,18 +214,19 @@
 				</table>
 			</div>
 			
+	<c:set var="page" value="${param.p ==null ? 1: param.p }" />
+	<c:set var="startNum" value="${page-(page-1)%5}" />
+	<c:set var="lastNum" value="${fn:substringBefore(Math.ceil(count/10),'.')}" /> <!-- 소숫점은 올림처리해줘야함  Math.ceil(10.2) -> 11.0 -> 소숫점짤라내야한다 -->
+			
 			<div class="indexer margin-top align-right">
 				<h3 class="hidden">현재 페이지</h3>
-				<div><span class="text-orange text-strong">1</span> / 1 pages</div>
+				<div><span class="text-orange text-strong">${(empty param.p)?1:param.p}</span> / ${lastNum} pages</div>
+														<!-- param.p==null && param.p=="" -->
 		
 	</div>
 			<div class="margin-top align-center pager">	
 		
 	<div>
-		
-	<c:set var="page" value="${param.p ==null ? 1: param.p }" />
-	<c:set var="startNum" value="${page-(page-1)%5}" />
-	<c:set var="lastNum" value="23" />
 	
 		<c:if test="${startNum>1}"> <!-- startNum-1>0 -->
 			<a href="?p=${startNum-1}&t=&q=" class="btn btn-prev">이전</a>
@@ -237,16 +239,18 @@
 	
 	<ul class="-list- center">
 		<c:forEach var="i" begin="0" end="4">
-		<li><a class="-text- orange bold" href="?p=${i+startNum}&t=&q=" >${i+startNum}</a></li>
+		<c:if test="${(startNum+i) <=lastNum}">
+		<li><a class="-text- ${(page==(startNum+i))?'orange':''} bold" href="?p=${startNum+i}&f=${param.f}&q=${param.q}" >${startNum+i}</a></li>
+		</c:if>
 		</c:forEach>
 				
 	</ul>
 	<div>
 		
-		<c:if test="${startNum+5<lastNum}">
+		<c:if test="${startNum+4<lastNum}">
 			<a href="?p=${startNum+5}&t=&q=" class="btn btn-next" >다음</a>
 		</c:if>
-		<c:if test="${startNum+5>=lastNum}">
+		<c:if test="${startNum+4>=lastNum}">
 			<span class="btn btn-next" onclick="alert('다음 페이지가 없습니다.');">다음</span>
 		</c:if>
 		
