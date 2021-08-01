@@ -33,12 +33,14 @@ CREATE TABLE MEMBER_ROLE
 create table member1(
     ID NVARCHAR2(50),
     PWD NVARCHAR2(50),
+    NAME NVARCHAR2(50),
     GENDER NCHAR(2),
     BIRTHDAY CHAR(10),
     PHONE CHAR(13),
     REGDATE DATE,
     EMAIL VARCHAR2(200)
       );
+drop table member1;
 
 insert into notice values(1, 'JDBC란 무엇인가?', 'okay', 'aaa', sysdate, 1, '');
 insert into notice values(2, 'JDBC 드라이버 다운로드 방법', 'newlec', 'aaa', sysdate, 10, '');
@@ -51,7 +53,16 @@ insert into notice values(8, '하이' , 'bye', '', sysdate, 35, '');
 insert into notice values(9, '졸리다' , 'bye', '', sysdate, 215, '');
 insert into notice values(10, '하아앙' , 'bye', '', sysdate, 15, '');
 insert into notice values(11, '자야지' , 'bye', '', sysdate, 5, '');
-
+insert into notice values(12, '제목12' , 'bye', '', sysdate, 5, '');
+insert into notice values(13, '제목13' , 'bye', '', sysdate, 5, '');
+insert into notice values(14, '제목14' , 'bye', '', sysdate, 5, '');
+insert into notice values(15, '제목15' , 'bye', '', sysdate, 5, '');
+insert into notice values(16, '제목16' , 'bye', '', sysdate, 5, '');
+insert into notice values(17, '제목17' , 'bye', '', sysdate, 5, '');
+insert into notice values(19, '제목19' , 'bye', '', sysdate, 5, '');
+insert into notice values(20, '제목20' , 'bye', '', sysdate, 5, '');
+insert into notice values(21, '제목21' , 'bye', '', sysdate, 5, '');
+insert into notice values(22, '제목22' , 'bye', '', sysdate, 5, '');
 
 
 select * from notice;
