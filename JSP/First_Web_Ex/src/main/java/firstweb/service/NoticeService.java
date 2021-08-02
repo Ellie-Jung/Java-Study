@@ -25,7 +25,33 @@ public class NoticeService {
 	}
 	public int insertNotice(Notice notice){
 		
-		return 0;
+		int result=0;
+		
+		String sql = "insert into notice ()";
+	
+	
+		String url =  "jdbc:oracle:thin:@localhost:1521:xe";
+		
+		try {
+			Class.forName("oracle.jdbc.driver.OracleDriver");
+			Connection con = DriverManager.getConnection(url,"hr","tiger");
+			Statement st = con.createStatement();
+			
+			result = st.executeUpdate(sql);
+				
+			st.close();
+			con.close();
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		return result;
+		
 	}
 
 	public int deleteNotice(int id){
@@ -92,9 +118,9 @@ public class NoticeService {
 				String files= rs.getString("FILES");
 				//String content= rs.getString("CONTENT");
 				int cmtCount = rs.getInt("CMT_COUNT");
+				boolean pub = rs.getBoolean("PUB");
 				
-				
-				NoticeView notice = new NoticeView(id,title,regdate,writerId,hit,files,cmtCount);
+				NoticeView notice = new NoticeView(id,title,regdate,writerId,hit,files,cmtCount,pub);
 				list.add(notice);
 						
 			}     
@@ -180,9 +206,10 @@ public class NoticeService {
 				String hit= rs.getString("HIT");
 				String files= rs.getString("FILES");
 				String content= rs.getString("CONTENT");
+				boolean pub = rs.getBoolean("PUB");
 				
 				
-				notice = new Notice(nid,title,regdate,writerId,hit,files,content);
+				notice = new Notice(nid,title,regdate,writerId,hit,files,content,pub);
 						
 			}     
 			
@@ -229,9 +256,10 @@ public class NoticeService {
 				String hit= rs.getString("HIT");
 				String files= rs.getString("FILES");
 				String content= rs.getString("CONTENT");
+				boolean pub = rs.getBoolean("PUB");
 				
 				
-				notice = new Notice(nid,title,regdate,writerId,hit,files,content);
+				notice = new Notice(nid,title,regdate,writerId,hit,files,content,pub);
 						
 			}     
 			
@@ -279,9 +307,10 @@ public class NoticeService {
 				String hit= rs.getString("HIT");
 				String files= rs.getString("FILES");
 				String content= rs.getString("CONTENT");
+				boolean pub = rs.getBoolean("PUB");
 				
 				
-				notice = new Notice(nid,title,regdate,writerId,hit,files,content);
+				notice = new Notice(nid,title,regdate,writerId,hit,files,content,pub);
 						
 			}     
 			

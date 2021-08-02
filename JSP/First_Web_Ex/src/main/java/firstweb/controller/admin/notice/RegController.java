@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import firstweb.entity.Notice;
+import firstweb.service.NoticeService;
+
 @WebServlet("/admin/board/notice/reg")
 public class RegController extends HttpServlet {
 
@@ -30,6 +33,21 @@ public class RegController extends HttpServlet {
 		String title = request.getParameter("title");
 		String content= request.getParameter("content");
 		String isOpen= request.getParameter("open");
+		boolean pub = false;
+		if(isOpen != null) {
+			pub = true;
+		}
+		
+		Notice notice = new Notice();
+		notice.setTitle(title);
+		notice.setContent(content);
+		notice.setPub(pub);
+		
+		NoticeService service=new NoticeService();
+		service.insertNotice(notice);
+		
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=UTF-8");
 		
 		PrintWriter out = response.getWriter();
 		out.printf("title : %s<br>", title);
