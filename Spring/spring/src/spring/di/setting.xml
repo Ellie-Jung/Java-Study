@@ -3,10 +3,17 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:util="http://www.springframework.org/schema/util"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
+	<!-- <context:annotation-config/> -->
+	<context:component-scan base-package="spring.di.ui, spring.di.entity"/>
 	<!-- Exam exam = new NewlecExam(); 스프링은 beans이라는태그를 이용해 생성할 객체 지시해달라고 한다 -->
 	<bean id="exam" class="spring.di.entity.NewlecExam" p:kor="10" p:eng="20"/>
+	<!-- <bean id="exam2" class="spring.di.entity.NewlecExam" p:kor="10" p:eng="20"/>
+	<bean id="exam1" class="spring.di.entity.NewlecExam" p:kor="10" p:eng="20"/> -->
 	
 	<!-- <bean id="exam" class="spring.di.entity.NewlecExam">
 		<property name="kor">
@@ -24,11 +31,11 @@
 		
 	<!-- ExamConsole console = new GridExamConsole(); -->
 <!-- 	<bean id="console" class="spring.di.ui.GridExamConsole"> -->
-	<bean id="console" class="spring.di.ui.InlineExamConsole">
+<!-- 	<bean id="console" class="spring.di.ui.InlineExamConsole"> -->
 		<!-- console.setExam(exam)위쪽에 심을때는 set생략하고 소문자로, 위쪽의 id=exam을 넣는데 걔타입에따라 value나 ref에 넣는다. 이경우 ref형-->
-		<property name="exam" ref="exam"></property>
-	</bean>
-	
+		<!-- <property name="exam" ref="exam"></property> -->
+<!-- 	</bean> -->
+	<!-- 
 	<bean id="exams" class="java.util.ArrayList">
 		<constructor-arg>
 			<list>
@@ -36,13 +43,10 @@
 				<ref bean="exam"/>
 			</list>
 		</constructor-arg>
-	</bean>
+	</bean> -->
 	
 	<!-- <util:list id="exams" list-class="java.util.ArrayList">
 			<bean class="spring.di.entity.NewlecExam" p:kor="1" p:eng="2"></bean>
 			<ref bean="exam"/>
 	</util:list> -->
-	
-	
-	
 </beans>
