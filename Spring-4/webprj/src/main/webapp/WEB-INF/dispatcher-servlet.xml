@@ -1,15 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
-        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
     <bean id="/index" class="com.newlecture.web.controller.IndexController"/>  <!-- 여기서 id="/index" 는 클래스의 이름일뿐이다. 실제 파일이나 경로아님. 근데 "/aa/index" 할경우 뷰를 찾는데 영향을준다. aa/WEB-INF 일케됨 (상대경로일때). 절대경로로 뷰를 찾도록 설정하기 -->
+     <bean id="/notice/list" class="com.newlecture.web.controller.notice.ListController"/>
+     <bean id="/notice/detail" class="com.newlecture.web.controller.notice.DetailController"/>
     
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
     	<property name="prefix" value="/WEB-INF/view/"></property>
     	<property name="suffix" value=".jsp"></property>
     </bean>
-    
+    <mvc:resources location="/static/" mapping="/**"></mvc:resources>
 
 </beans>
