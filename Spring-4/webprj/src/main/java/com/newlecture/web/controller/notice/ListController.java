@@ -12,7 +12,7 @@ public class ListController implements Controller{
 	@Override
 	public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		ModelAndView mv=new ModelAndView("notice/list");
+		ModelAndView mv=new ModelAndView("notice.list");
 		
 		return mv;
 	}
