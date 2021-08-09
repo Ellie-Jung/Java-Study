@@ -15,9 +15,13 @@ public class NoticeController { //<bean name="noticeController" class="com.newle
 	}
 	@RequestMapping("reg")
 	@ResponseBody
-	public String reg() {
+	public String reg(String title, String content, String category,String[] foods) {
+		System.out.println(category);
+		for(String food:foods) {
+			System.out.println(food);
+		}
 		
-		return "reg";
+		return String.format("title:%s<br>content:%s<br>category:%s" , title, content,category);
 	}
 	@RequestMapping("edit")
 	public String edit() {
