@@ -2,7 +2,7 @@ package level3;
 
 import java.util.Scanner;
 
-public class Ex8 {
+public class Ex9 {
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		
@@ -10,9 +10,11 @@ public class Ex8 {
 		
 		
 		for(int i=1;i<=t;i++) {
-			int x=scanner.nextInt();
-			int y=scanner.nextInt();
-			System.out.println("Case #"+i+": "+x+" + "+y+" = "+(x+y));
+			System.out.print("*");
+			for(int j=1;j<i;j++) {
+				System.out.print("*");
+			}
+			System.out.println();
 		}
 				
 	}
