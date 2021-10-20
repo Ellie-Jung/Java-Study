@@ -7,19 +7,24 @@ public class Ex4 {
 		
 		Scanner scanner=new Scanner(System.in);
 		
-		int count = scanner.nextInt();
-		int count2;
-		String x;
-		for(int i=0; i<count;i++) {
-			count2=scanner.nextInt();
-			x = scanner.next();
-			for(int j=0;j<x.length();j++) {
-				for(int k=0;k<count2;k++) {
-					System.out.print(x.charAt(i));
-				}
-				System.out.println();
+		String x= scanner.next().toUpperCase();
+		
+		int[] count= new int[26];
+		
+		int max=0;
+		char answer='?';
+		for(int i=0; i<x.length(); i++) {
+			count[x.charAt(i)-'A']++;
+			
+			if(max<count[x.charAt(i)-'A']) {
+				max=count[x.charAt(i)-'A'];
+				answer=x.charAt(i);
+			}else if(max==count[x.charAt(i)-'A']) {
+				answer='?';
 			}
 		}
+		System.out.println(answer);
+		
 	}
 }
 
