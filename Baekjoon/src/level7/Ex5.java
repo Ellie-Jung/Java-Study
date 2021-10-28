@@ -11,7 +11,11 @@ public class Ex5 {
 	
 		String[] arr= x.split(" ");
 		
-		System.out.println(arr.length);
+		if(x.length()==0) {
+			System.out.println(0);
+		}else {
+			System.out.println(arr.length);
+		}
 	}
 }
 
